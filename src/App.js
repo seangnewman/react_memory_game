@@ -9,31 +9,36 @@ const people = require('./people.js')
 
 class App extends Component {
   // Setting this.state.friends to the friends json array
+  // adding currentScore, highScore
   state = {
-    friends
+    friends,
+    currentScore: 0,
+    highScore: 0
   };
 
-  removeFriend = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
+  clickCounter = id => {
+    //What do I do when the card is clicked
   };
+
+  gameWon = () => {
+    // How do I know the game has been won/lost
+  }
 
   // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
     return (
       <Wrapper>
-        <Title>Changing the Game</Title>
+        <Title score={this.state.currentScore} highscore={this.state.highScore}>Changing the Game</Title>
         {this.state.friends.map(friend => (
           <FriendCard
-            removeFriend={this.removeFriend}
+
             id={friend.id}
             key={friend.id}
             name={friend.name}
             image={friend.image}
             occupation={friend.occupation}
             location={friend.location}
+            countClick={this.clickCounter}
           />
         ))}
       </Wrapper>

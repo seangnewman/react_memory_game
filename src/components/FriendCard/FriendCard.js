@@ -2,7 +2,9 @@ import React from "react";
 import "./FriendCard.css";
 
 const FriendCard = props => (
-  <div className="card">
+  // Clicking anywhere on the card should invoke click event
+  // Now need to define clickCounter in App.js
+  <div className="card" onClick={() => props.clickCounter(props.id)} >
     <div className="img-container">
       <img alt={props.name} src={props.image} />
     </div>
@@ -20,7 +22,7 @@ const FriendCard = props => (
       </ul>
     </div>
     <span onClick={() => props.removeFriend(props.id)} className="remove">
-      
+
     </span>
   </div>
 );
